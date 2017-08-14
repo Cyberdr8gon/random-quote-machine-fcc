@@ -1,21 +1,51 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {connect} from 'react-redux';
+import thunk from "redux-thunk";
+
+// css
 import './App.css';
+
+// components
+import RandomQuote from './components/RandomQuote.js';
+
+
+
+// app class
 
 class App extends Component {
   render() {
+
+    let appGeneratedStyles = {
+      backgroundColor: this.props.backgroundColor,
+    };
+    let quoteBoxStyles = {
+      backgroundColor: "#FFFFFF",
+    };
+
+    let twitterURI = 'https://twitter.com/intent/tweet?hashtags=freecodecamp&text=' 
+      + encodeURIComponent('"' + this.props.quote.quote 
+                        + '" ' + this.props.quote.author);
+
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div className="App background-transition" style={appGeneratedStyles}>
+        <div className="Quote-Box" style={quoteBoxStyles}>
+          <RandomQuote/>
+          <div className="interactions">
+            <button className="background-transition" onClick={this.props.getNewQuote} style={ appGeneratedStyles }>New Quote</button>
+            <a href={twitterURI} className="small-interaction-button background-transition" style={appGeneratedStyles}>Tweet</a>
+          </div>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }
 }
 
-export default App;
+export default connect((store) => {
+  return {
+    backgroundColor: store.textColor,
+    quote: {
+      quote: store.quote,
+      author: store.author,
+    },
+  }
+})(App);

@@ -1,24 +1,96 @@
+
 .App {
-  text-align: center;
+  Display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+
+
+/*
+ * Block Quote 
+ */
+
+blockquote {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-style: italic;
+  max-width: 500px;
+  margin: 0.25em 0;
+  line-height: 1.45;
+  position: relative;
+  color: #383838;
+  padding: 0.25em 40px 0.25em 80px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+blockquote:before {
+  display: block;
+  content: "\201C";
+  font-size: 80px;
+  position: absolute;
+  left: 0px;
+  top: -20px;
+  color: #7a7a7a;
+}
+
+blockquote cite {
+  color: #999999;
+  font-size: 20px;
+  display: block;
+  margin-top: 5px;
+}
+ 
+blockquote cite:before {
+  content: "\2014 \2009";
+}
+
+.Quote-Box {
+  border-radius: 15px;
+
+}
+
+.Quote-Box button {
+  margin: 20px ;
+  height: 32px;
+  width: 120px;
+  border-radius: 5px;
+  border: none;
   color: white;
+  font-size: 17px;
 }
 
-.App-intro {
-  font-size: large;
+.background-transition {
+  transition-property: background-color; 
+  transition-duration: 0.4s; 
+  transition-timing-function: ease-in; 
+  transition-delay: 1s; 
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+
+.color-transition {
+  transition-property: color; 
+  transition-duration: 0.4s; 
+  transition-timing-function: ease-in; 
+  transition-delay: 1s; 
+}
+
+.interactions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+}
+
+.small-interaction-button {
+  height: 30px;
+  width: 100px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  line-height: 30px;
 }
